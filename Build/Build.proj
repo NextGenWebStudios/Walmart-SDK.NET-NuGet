@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="PackageArtifacts" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <VersionMajor>1</VersionMajor>
+	  <VersionMinor>0</VersionMinor>
+	  <VersionPatch>0</VersionPatch>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageFiles Include="$(SolutionsPath)\**\*.*"
+                       Exclude="$(SolutionsPath)\**\bin\**;
+                                  $(SolutionsPath)\**\Logs\**;
+                                  $(SolutionsPath)\**\obj\**;
+                                  $(SolutionsPath)\**\*.suo;
+                                  $(SolutionsPath)\**\*.cache;">
+      <PackageName>$(DropsPath)\$(SemanticVersion)\$(PackageName).Source.v$(SemanticVersion).zip</PackageName>
+      <WorkingDirectory>$(SolutionsPath)</WorkingDirectory>
+      <Flatten>False</Flatten>
+    </PackageFiles>
+
+    <PackageFiles Include="$(SolutionsPath)\Walmart.SDK\bin\Release\Walmart.SDK.dll;">
+      <PackageName>$(DropsPath)\$(SemanticVersion)\$(PackageName).dlls.v$(SemanticVersion).zip</PackageName>
+      <WorkingDirectory>$(SolutionsPath)</WorkingDirectory>
+      <Flatten>True</Flatten>
+    </PackageFiles>
+  </ItemGroup>
+  
+  
+  <ItemGroup>
+	
+	<NugetPackage Include="$(SolutionRoot)\License.txt;">
+      <PackageName>Walmart.SDK</PackageName>
+	  <NuspecFile>Walmart.SDK.nuspec</NuspecFile>
+    </NugetPackage>
+    
+    
+  </ItemGroup>
+  
+  <PropertyGroup>
+    <SolutionName>Walmart.SDK</SolutionName>
+    <SolutionsPath>$(MSBuildProjectDirectory)\..\src</SolutionsPath>
+    <BuildPath>$(MSBuildProjectDirectory)\..\BuildSystem</BuildPath>
+  </PropertyGroup>
+
+  <Import Project="$(BuildPath)\BuildSystem.proj" />
+
+  <Target Name="Build"
+        DependsOnTargets="  CleanSolution;
+                            UpdateAssemblyVersion;
+                            BuildSolutions;" />
+
+  
+  <Target Name="PackageArtifacts"
+          DependsOnTargets="Build;  
+                            Package;
+							              PackageNuget;
+                            BuildSuccess" />
+
+</Project>
