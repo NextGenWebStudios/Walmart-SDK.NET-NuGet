@@ -3,10 +3,11 @@
   <metadata>
     <id>Walmart.SDK</id>
     <version>1.0.0</version>
+    <title>Walmart.SDK</title>
     <authors>NextGen Web Studios - Jeremy Frederick</authors>
     <owners>NextGen Web Studios - Jeremy Frederick</owners>
-	  <iconUrl>https://github.com/nextgenwebstudios/walmart-sdk.net/raw/master/artifacts/img/walmart-logo.png</iconUrl>
-    <projectUrl>https://github.com/nextgenwebstudios/walmart-sdk.net</projectUrl>
+	  <iconUrl>https://github.com/nextgenwebstudios/walmart-sdk.net-nuget/raw/master/artifacts/img/walmart-logo.png</iconUrl>
+    <projectUrl>https://github.com/nextgenwebstudios/walmart-sdk.net-nuget</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       .NET SDK for the Walmart Open API (https://developer.walmartlabs.com)
