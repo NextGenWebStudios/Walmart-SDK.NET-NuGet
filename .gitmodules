@@ -1,3 +1,7 @@
 [submodule "BuildSystem"]
 	path = BuildSystem
 	url = git://github.com/sharparchitecture/Sharp-Architecture-Build.git
+[submodule "Src/Walmart.SDK"]
+	path = Src/Walmart.SDK
+	url = https://github.com/NextGenWebStudios/Walmart-SDK.NET.git
+	branch = master
